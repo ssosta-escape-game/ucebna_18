@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C13 – Slovenčina</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap');
+
+/* -------------------- GLOBAL -------------------- */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter','Segoe UI',sans-serif;
+}
+
+body{
+  background:#0e0d0b;
+  color:#f2e9d8;
+  min-height:100vh;
+  padding:22px 16px;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* -------------------- ATRAMENTOVÉ POZADIE -------------------- */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, #2c1f13, transparent 60%),
+    radial-gradient(circle at 80% 70%, #3a2a18, transparent 60%),
+    linear-gradient(180deg,#1b140d,#0e0d0b);
+  opacity:0.55;
+  z-index:-2;
+}
+
+/* -------------------- IKONY V POZADÍ -------------------- */
+.bg span{
+  position:absolute;
+  font-size:3rem;
+  color:rgba(255,230,180,0.06);
+  user-select:none;
+  z-index:-1;
+  animation:float 7s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%{ transform:translateY(0); }
+  50%{ transform:translateY(-14px); }
+  100%{ transform:translateY(0); }
+}
+
+.bg span:nth-child(1){ top:10%; left:15%; }
+.bg span:nth-child(2){ top:35%; right:12%; }
+.bg span:nth-child(3){ top:65%; left:25%; }
+.bg span:nth-child(4){ top:20%; right:30%; }
+.bg span:nth-child(5){ top:75%; left:55%; }
+
+/* -------------------- HLAVIČKA -------------------- */
+.lit-header{
+  text-align:center;
+  margin-bottom:32px;
+  padding:28px 18px;
+  background:rgba(255,245,230,0.06);
+  border-radius:26px;
+  border:1px solid rgba(255,230,180,0.18);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 28px rgba(216,192,143,0.15);
+  position:relative;
+  overflow:hidden;
+}
+
+.lit-header::before{
+  content:"📚 ✒️ 📜 ✍️";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  font-size:3.4rem;
+  letter-spacing:18px;
+  color:rgba(255,230,180,0.05);
+  pointer-events:none;
+}
+
+.lit-badge{
+  display:inline-block;
+  padding:6px 16px;
+  margin-bottom:14px;
+  font-size:0.75rem;
+  letter-spacing:1px;
+  color:#0e0d0b;
+  background:linear-gradient(135deg,#c9a86a,#b68a4c,#d8c08f);
+  background-size:200% 200%;
+  animation:badgeMove 6s ease infinite;
+  border-radius:20px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+@keyframes badgeMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.lit-header h1{
+  font-family:'Playfair Display',serif;
+  font-size:2.9rem;
+  color:#d8c08f;
+  letter-spacing:2px;
+  margin-bottom:8px;
+  text-shadow:0 0 12px rgba(216,192,143,0.35);
+}
+
+.lit-underline{
+  width:160px;
+  height:3px;
+  margin:16px auto 0;
+  background:linear-gradient(90deg, transparent, #d8c08f, transparent);
+  animation:inkline 2.6s ease-in-out infinite;
+  border-radius:4px;
+}
+
+@keyframes inkline{
+  0%{ opacity:0.3; transform:scaleX(0.7); }
+  50%{ opacity:1; transform:scaleX(1); }
+  100%{ opacity:0.3; transform:scaleX(0.7); }
+}
+
+/* -------------------- MAIN -------------------- */
+main{
+  max-width:500px;
+  margin:auto;
+}
+
+/* -------------------- NADPIS SEKCIÍ -------------------- */
+.questions h2{
+  text-align:center;
+  margin-bottom:1.4rem;
+  font-size:1.5rem;
+  color:#d8c08f;
+  font-family:'Playfair Display',serif;
+  letter-spacing:1px;
+}
+
+/* -------------------- KARTY OTÁZOK -------------------- */
+.question{
+  background:rgba(255,245,230,0.07);
+  border-radius:18px;
+  padding:1.3rem 1.4rem;
+  margin-bottom:1.1rem;
+  border:1px solid rgba(255,230,180,0.15);
+  box-shadow:0 8px 22px rgba(0,0,0,0.35);
+  transition:.25s;
+}
+
+.question:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 30px rgba(216,192,143,0.25);
+}
+
+.q-header{
+  display:flex;
+  align-items:flex-start;
+  gap:.8rem;
+  margin-bottom:.5rem;
+}
+
+.q-num{
+  background:#d8c08f;
+  color:#0e0d0b;
+  font-weight:700;
+  border-radius:50%;
+  width:32px;
+  height:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1rem;
+  box-shadow:0 0 10px rgba(216,192,143,0.5);
+}
+
+.q-text{
+  color:#f2e9d8;
+  font-weight:400;
+  line-height:1.55;
+  font-size:1rem;
+}
+
+/* -------------------- CHECKPOINT -------------------- */
+.checkpoint{
+  margin-top:2.4rem;
+  padding:1.6rem;
+  border-radius:22px;
+  background:rgba(255,245,230,0.08);
+  border:2px dashed #d8c08f;
+  text-align:center;
+  box-shadow:0 8px 22px rgba(0,0,0,0.25);
+}
+
+.checkpoint strong{
+  color:#d8c08f;
+  font-size:1.2rem;
+}
+
+/* -------------------- FOOTER -------------------- */
+footer{
+  margin-top:2rem;
+  text-align:center;
+  font-size:.8rem;
+  color:#b8a78a;
+}
+
+.insta-link {
+  display:inline-block;
+  font-size:1.1rem;
+  font-weight:700;
+  color:#d8c08f;
+  text-decoration:none;
+  text-shadow:0 0 10px rgba(216,192,143,0.5);
+  transition:0.3s;
+}
+
+.insta-link:hover {
+  color:#f2e9d8;
+  text-shadow:0 0 14px rgba(216,192,143,0.9);
+  transform:translateY(-2px);
+}
+
+.gfx-footer {
+  margin-top:2rem;
+  text-align:center;
+  font-size:.85rem;
+  color:#d8c08f;
+  text-shadow:0 0 8px rgba(216,192,143,0.3);
+}
+
+.gfx-footer .ornament {
+  font-size:20px;
+  color:#d8c08f;
+  margin-bottom:6px;
+  text-shadow:0 0 10px rgba(216,192,143,0.5);
+}
+.gfx-header{
+  text-align:center;
+  margin-bottom:2rem;
+  padding:2rem 1.4rem;
+  background:rgba(255,245,230,0.06);
+  border-radius:22px;
+  border:1px solid rgba(255,230,180,0.18);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 28px rgba(255,230,180,0.15);
+  position:relative;
+  overflow:hidden;
+}
+
+/* jemné symboly v pozadí */
+.gfx-header::before{
+  content:"📚 ✒️ 📜 ✍️";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  font-size:3.8rem;
+  letter-spacing:18px;
+  color:rgba(255,230,180,0.05);
+  pointer-events:none;
+}
+
+/* badge */
+.gfx-badge{
+  display:inline-block;
+  padding:6px 16px;
+  margin-bottom:14px;
+  font-size:0.75rem;
+  letter-spacing:1px;
+  color:#0e0d0b;
+  background:linear-gradient(135deg,#c9a86a,#b68a4c,#d8c08f);
+  background-size:200% 200%;
+  animation:badgeMove 6s ease infinite;
+  border-radius:20px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+@keyframes badgeMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.gfx-header h1{
+  font-size:2.8rem;
+  font-weight:800;
+  color:#d8c08f;
+  text-shadow:0 0 14px rgba(216,192,143,0.4);
+}
+
+.gfx-underline{
+  width:180px;
+  height:3px;
+  margin:16px auto 0;
+  background:linear-gradient(90deg, transparent, #d8c08f, transparent);
+  animation:glowline 2.4s ease-in-out infinite;
+  border-radius:4px;
+}
+
+@keyframes glowline{
+  0%{ opacity:0.3; transform:scaleX(0.7); }
+  50%{ opacity:1; transform:scaleX(1); }
+  100%{ opacity:0.3; transform:scaleX(0.7); }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+  <span>✒️</span>
+  <span>📘</span>
+  <span>📝</span>
+  <span>📚</span>
+  <span>✍️</span>
+</div>
+
+<!-- ✅ NEW LITERARY HEADER -->
+<header class="gfx-header">
+  <div class="gfx-badge">SSOSTA ESCAPE GAME • LEVEL 5</div>
+  <h1>UČEBŇA 18</h1>
+  <div class="gfx-underline"></div>
+</header>
+
+<main>
+
+<section class="questions">
+  <h2>📝 Úlohy</h2>
+
+  <!-- Hádanka – Kniha -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div class="q-text">
+        Všetko, čo mám, kto ku mne príde, vďačne mu dám;  
+        a trebárs tisícich obohatím, tým ani máčny mak neutratím.  
+        <br><br><strong>Čo som?</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div class="q-text">
+        Nájdite vo svojom okolí jedno konkrétne podstatné meno,  
+        ktoré sa skloňuje podľa vzoru <strong>„dub“</strong>.  
+        <br><br><strong>Zapíšte slovo:</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-num">3</div>
+      <div class="q-text">
+        Objavte akostné prídavné meno, ktoré opisuje niečo  
+        v chodbe, triede alebo na dverách.  
+        <br><br><strong>Zapíšte prídavné meno:</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-num">4</div>
+      <div class="q-text">
+        Nájdi v okolí slovo s <strong>ypsilonom</strong>  
+        (na nástenke, plagáte, dverách, školskom ozname…).  
+        <br><br><strong>Zapíš ho:</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-num">5</div>
+      <div class="q-text">
+        Nájdite v okolí vetu (na plagáte, nástenke, dverách)  
+        a určite jej vetný člen – <strong>prísudok</strong>.  
+        <br><br><strong>Zapíšte prísudok:</strong>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="checkpoint">
+  <p>📩 Odpovede pošli do DM na</p>
+  <a href="https://www.instagram.com/ssosta.escape.game/" 
+     target="_blank" 
+     class="insta-link">
+     @ssosta.escape.game
+  </a>
+</section>
+
+<footer class="gfx-footer">
+  <div class="ornament">✦ ✧ ✦</div>
+  <p>SSOSTA ESCAPE GAME</p>
+</footer>
+</body>
+</html>
