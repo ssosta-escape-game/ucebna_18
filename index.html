@@ -137,19 +137,20 @@ main{
   letter-spacing:1px;
 }
 
-/* -------------------- KARTY OTÁZOK -------------------- */
+/* --- GLASSMORPHISM KARTY – PERGAMENOVÝ EFEKT --- */
 .question{
   background:rgba(255,245,230,0.07);
-  border-radius:18px;
-  padding:1.3rem 1.4rem;
-  margin-bottom:1.1rem;
+  backdrop-filter:blur(8px);
+  border-radius:16px;
+  padding:1.2rem;
+  margin-bottom:1.2rem;
   border:1px solid rgba(255,230,180,0.15);
-  box-shadow:0 8px 22px rgba(0,0,0,0.35);
+  box-shadow:0 8px 25px rgba(0,0,0,0.35);
   transition:.25s;
 }
 
 .question:hover{
-  transform:translateY(-5px);
+  transform:translateY(-4px);
   box-shadow:0 12px 30px rgba(216,192,143,0.25);
 }
 
@@ -157,29 +158,24 @@ main{
   display:flex;
   align-items:flex-start;
   gap:.8rem;
-  margin-bottom:.5rem;
 }
 
 .q-num{
   background:#d8c08f;
   color:#0e0d0b;
   font-weight:700;
-  border-radius:50%;
-  width:32px;
-  height:32px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  border-radius:10px;
+  padding:.4rem .75rem;
   font-size:1rem;
   box-shadow:0 0 10px rgba(216,192,143,0.5);
 }
 
 .q-text{
+  font-size:1.05rem;
   color:#f2e9d8;
-  font-weight:400;
-  line-height:1.55;
-  font-size:1rem;
+  line-height:1.45rem;
 }
+
 
 /* -------------------- CHECKPOINT -------------------- */
 .checkpoint{
@@ -390,5 +386,6 @@ footer{
 </footer>
 </body>
 </html>
+
 
 
