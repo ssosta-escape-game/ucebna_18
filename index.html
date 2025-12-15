@@ -202,30 +202,31 @@
         }
 
         /* nastavíme čítač */
-.questions {
-  counter-reset: q-counter;
-}
+        .questions {
+            counter-reset: q-counter;
+        }
 
-.q-num {
-  background:#d8c08f;
-  color:#0e0d0b;
-  font-weight:700;
-  border-radius:50%;
-  width:32px;
-  height:32px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1rem;
-  box-shadow:0 0 10px rgba(216,192,143,0.5);
+        .q-num {
+            background: #d8c08f;
+            color: #0e0d0b;
+            font-weight: 700;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: 0 0 10px rgba(216, 192, 143, 0.5);
 
-  /* automatické číslovanie */
-  counter-increment: q-counter;
-}
+            /* automatické číslovanie */
+            counter-increment: q-counter;
+        }
 
-.q-num::before {
-  content: counter(q-counter);
-}
+        .q-num::before {
+            content: counter(q-counter);
+        }
+
 
         .q-num {
             background: #d8c08f;
@@ -263,6 +264,44 @@
             color: #d8c08f;
             font-size: 1.2rem;
         }
+/* --- GLASSMORPHISM KARTY – PERGAMENOVÝ EFEKT --- */
+.question{
+  background:rgba(255,245,230,0.07);
+  backdrop-filter:blur(8px);
+  border-radius:16px;
+  padding:1.2rem;
+  margin-bottom:1.2rem;
+  border:1px solid rgba(255,230,180,0.15);
+  box-shadow:0 8px 25px rgba(0,0,0,0.35);
+  transition:.25s;
+}
+
+.question:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px rgba(216,192,143,0.25);
+}
+
+.q-header{
+  display:flex;
+  align-items:flex-start;
+  gap:.8rem;
+}
+
+.q-num{
+  background:#d8c08f;
+  color:#0e0d0b;
+  font-weight:700;
+  border-radius:10px;
+  padding:.4rem .75rem;
+  font-size:1rem;
+  box-shadow:0 0 10px rgba(216,192,143,0.5);
+}
+
+.q-text{
+  font-size:1.05rem;
+  color:#f2e9d8;
+  line-height:1.45rem;
+}
 
         /* -------------------- FOOTER -------------------- */
         footer {
@@ -392,40 +431,38 @@
             <h2>📝 Úlohy</h2> <!-- Hádanka – Kniha -->
             <div class="question">
                 <div class="q-header">
-                    <div class="q-num">1</div>
+                    <div class="q-num"></div>
                     <div class="q-text"> Všetko, čo mám, kto ku mne príde, vďačne mu dám; a trebárs tisícich obohatím,
                         tým ani máčny mak neutratím. <br><br><strong>Čo som?</strong> </div>
                 </div>
             </div> <!-- 1 -->
             <div class="question">
-                
                 <div class="q-header">
-                    <div class="q-num">2</div>
+                    <div class="q-num"></div>
                     <div class="q-text"> Nájdite vo svojom okolí jedno konkrétne podstatné meno, ktoré sa skloňuje podľa
                         vzoru <strong>„dub“</strong>. <br><br><strong>Zapíšte slovo:</strong> </div>
                 </div>
             </div> <!-- 2 -->
             <div class="question">
                 <div class="q-header">
-                     <div class="q-header">
-    <div class="q-num"></div>
-                    <div class="q-num">3</div>
+                    <div class="q-num"></div>
                     <div class="q-text"> Objavte akostné prídavné meno, ktoré opisuje niečo v chodbe, triede alebo na
                         dverách. <br><br><strong>Zapíšte prídavné meno:</strong> </div>
                 </div>
             </div> <!-- 3 -->
             <div class="question">
                 <div class="q-header">
-                    <div class="q-num">4</div>
+                    <div class="q-num"></div>
                     <div class="q-text"> Nájdi v okolí slovo s <strong>ypsilonom</strong> (na nástenke, plagáte,
                         dverách, školskom ozname…). <br><br><strong>Zapíš ho:</strong> </div>
                 </div>
             </div> <!-- 4 -->
             <div class="question">
                 <div class="q-header">
-                    <div class="q-num">5</div>
+                    <div class="q-num"></div>
                     <div class="q-text"> Nájdite v okolí vetu (na plagáte, nástenke, dverách) a určite jej vetný člen –
-                        <strong>prísudok</strong>. <br><br><strong>Zapíšte prísudok:</strong> </div>
+                        <strong>prísudok</strong>. <br><br><strong>Zapíšte prísudok:</strong>
+                    </div>
                 </div>
             </div>
         </section>
